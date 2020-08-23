@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Balance</title>
+</head>
+<body>
+
+
+    <div align="center">
+
+
+        <label for="harsha">Harsha's Initial Ammount</label>
+        <input type="Number" id="Harsha" required="" >
+        <label for="scott">Scott's Ammount</label>
+        <input type="Number" id="Scott" required="" >
+
+
+
+        <table border="1" style="margin:5px;" align="center" id="table">
+            <tr>
+                <th>From: <select  id="from">
+                  <option value="Harsha">Harsha</option>
+                  <option value="Scott">Scott</option>
+
+              </select></th>
+              <th>To:<select  id="to">
+                  <option value="Harsha">Harsha</option>
+                  <option value="Scott">Scott</option>
+
+              </select></th>
+              <th>Ammount<input type="Number" id="ammount" required="" ></th>
+          </tr>
+          <p id="error"></p>
+
+
+      </table>
+      <button type="button" onclick="add()" style="margin-left: 600px;">Add</button>
+
+
+
+      <button type="button" onclick="balance()" style="display: block;" >Calculate Balance</button>
+      <label for="finalHarsha">Harsha's final Balance</label>
+      <input type="Number" id="finalHarsha">
+      <label for="finalScott">Scott's final Balance</label>
+      <input type="Number" id="finalScott">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script language="javascript">
+
+
+           // value of harsha's initial; balance
+           var x;       
+              // value of scott's initia balance
+              var y;   
+              // select - "from"
+              var a;   
+             // select -"to"
+             var b;    
+               // ammount variable
+               var d;   
+               var e ; 
+               var f;
+               var p=[];
+               var q = [];
+
+
+
+               function add(){
+
+                x = Number(document.getElementById("Harsha").value);
+                y = Number(document.getElementById("Scott").value);
+                e = x;
+                f = y;
+                
+
+                a= document.getElementById("from").value;
+                b = document.getElementById("to").value;
+                d = Number(document.getElementById("ammount").value);
+
+
+
+                var table = document.getElementById("table");
+                var row ;
+                var cell1 ;
+                var cell2 ;
+                var cell3 ;
+
+                // if(x<=0 || y<=0){
+
+                //     alert("you cant have negative values");
+                // }
+
+
+
+                if(x<=0 || y<=0){
+                    alert("No balance to proceed");
+                }
+
+
+                else if((a==="Harsha" )&& (b==="Scott")){
+
+                  f = f + d;
+                  e = e-d;
+                  p.push(-d);
+                  q.push(d);
+
+
+                  row = table.insertRow();
+                  cell1 = row.insertCell(0);
+                  cell2 = row.insertCell(1);
+                  cell3 = row.insertCell(2);
+                  cell1.innerHTML =a ;
+                  cell2.innerHTML = b;
+                  cell3.innerHTML=d;
+                // document.getElementById("Harsha").value=x;
+                // document.getElementById("Scott").value=y;
+
+
+            }
+            else if((a==="Scott") && (b=="Harsha")){
+
+                e = e + d;
+                f= f-d;
+                p.push(d);
+                q.push(-d);
+
+
+                row = table.insertRow();
+                cell1 = row.insertCell(0);
+                cell2 = row.insertCell(1);
+                cell3 = row.insertCell(2);
+                cell1.innerHTML =a ;
+                cell2.innerHTML = b;
+                cell3.innerHTML=d;
+
+                //  document.getElementById("harsha").value=x;
+                // document.getElementById("scott").value=y;
+            }
+
+            else { alert("You can't add money from yourself to yourself");
+
+        }
+
+
+
+
+    }
+
+
+
+
+    function balance(){
+
+
+        console.log("array p is [" + p + "]");
+        console.log("array q is [" + q + "]");
+        if(x <= 0 || y <= 0){
+            alert("Negative Balance! Please have sufficient balance");
+        }
+
+
+        var sum = 0;
+        var lum=0;
+
+
+
+        for (var i = 0; i < p.length; i++) {
+          sum += p[i];
+      }
+
+
+      for (var i = 0; i < q.length; i++) {
+          lum += q[i];
+      }
+
+
+
+//         for(var i =1; i<=table.rows.length;i++){
+
+
+//             x+=e;
+//             y+=f;
+// }
+
+document.getElementById("finalHarsha").value=x+sum;
+document.getElementById("finalScott").value=y+lum;
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
